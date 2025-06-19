@@ -3,6 +3,7 @@ package com.example.springbootpostgresqlcrud.controller;
 import com.example.springbootpostgresqlcrud.model.User;
 import com.example.springbootpostgresqlcrud.service.Userservice;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
@@ -23,8 +24,8 @@ public class Usercontroller {
     @GetMapping("/{id}")
     public ResponseEntity<User> getUserById(@PathVariable Long id) {
         return userService.getUserById(id)
-            .map(ResponseEntity::ok)
-            .orElse(ResponseEntity.notFound().build());
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
     }
 
     @PostMapping
